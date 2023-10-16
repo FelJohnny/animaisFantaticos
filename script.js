@@ -24,13 +24,38 @@ function tabMenu() {
 }
 tabMenu();
 
-const accordiontlist = document.querySelectorAll('.js-accordion dt');
 
-function activeAccordion(){
-    this.classList.toggle('ativo');
-    this.nextElementSibling.classList.toggle('ativo');
+function actAccordion(){
+    const accordiontlist = document.querySelectorAll('.js-accordion dt');
+
+    function activeAccordion(){
+        this.classList.toggle('ativo');
+        this.nextElementSibling.classList.toggle('ativo');
+    }
+    accordiontlist.forEach((item) =>{
+        item.addEventListener('click', activeAccordion);
+        
+    });
 }
-accordiontlist.forEach((item) =>{
-    item.addEventListener('click', activeAccordion);
-    
-})
+actAccordion();
+
+
+function scrollAnimation(){
+    const linkInterno = document.querySelectorAll('a[href^="#"]');
+
+    function scrollToSection(event){
+    event.preventDefault();
+    const href = this.getAttribute('href');
+    const section = document.querySelector(href);
+    const topo = section.offsetTop;
+    window.scrollTo({
+        top: topo,
+        behavior: 'smooth',
+    });
+    }
+
+    linkInterno.forEach((item) =>{
+        item.addEventListener('click', scrollToSection);
+    })
+}
+scrollAnimation();
