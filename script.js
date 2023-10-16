@@ -59,3 +59,18 @@ function scrollAnimation(){
     })
 }
 scrollAnimation();
+
+
+const sections = document.querySelectorAll('.js-scroll');
+const windowMetade = window.innerHeight * 0.6;
+function transitionScroll(){
+    sections.forEach((section) =>{
+        const sectionTop = section.getBoundingClientRect().top;
+        const sectionVisible = sectionTop - windowMetade < 0;
+        if(sectionVisible){
+            section.classList.add('ativo');
+        }
+    })
+}
+
+window.addEventListener('scroll', transitionScroll)
