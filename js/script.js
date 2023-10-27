@@ -6,3 +6,5 @@ import actAccordion from './modules/accordion.js';
 actAccordion();
 import tabMenu from './modules/tabMenu.js';
 tabMenu();
+import initModal from './modules/modal.js';
+initModal();
